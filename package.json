@@ -7,11 +7,29 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "apkdebug": "cd android && ./gradlew assembleDebug",
+    "apkgen": "cd android && ./gradlew assembleRelease",
+    "aabgen": "cd android && ./gradlew bundleRelease",
+    "refresh": "watchman watch-del-all && rm -f yarn.lock && rm -rf node_modules && yarn && yarn start --reset-cache",
+    "apkfolder": "open android/app/build/outputs",
+    "clean:android": "cd android && ./gradlew clean && cd ../"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.0.8",
+    "@react-navigation/native-stack": "^6.4.0",
+    "axios": "^0.25.0",
+    "babel-plugin-dotenv-import": "^2.2.0",
+    "moment": "^2.29.1",
+    "overmind": "^28.0.1",
+    "overmind-react": "^29.0.1",
     "react": "17.0.2",
-    "react-native": "0.67.1"
+    "react-native": "0.67.1",
+    "react-native-flash-message": "^0.2.1",
+    "react-native-paper": "^4.11.2",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.10.2",
+    "react-native-vector-icons": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -23,6 +41,7 @@
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
     "babel-jest": "^26.6.3",
+    "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^7.14.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.66.2",

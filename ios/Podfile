@@ -12,6 +12,8 @@ target 'happymoney_2' do
     :hermes_enabled => false
   )
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'happymoney_2Tests' do
     inherit! :complete
     # Pods for testing
