@@ -21,9 +21,12 @@ interface Props {
 const Layout = (props: Props) => {
   const {navigation} = props;
 
+  const [fullName, setFullName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [secure, setSecure] = React.useState(true);
+  const [confirmPass, setConfirmPass] = React.useState('');
+  const [securePass, setSecurePass] = React.useState(true);
 
   React.useEffect(() => {
     const backAction = () => {
@@ -42,13 +45,24 @@ const Layout = (props: Props) => {
   return (
     <ScrollView style={screenStyles.container}>
       <View style={screenStyles.headerWrapper}>
-        <Text style={screenStyles.title}>Welcome!</Text>
-        <Text style={screenStyles.subtitle}>Sign in to continue</Text>
+        <Text style={screenStyles.title}>Hi!</Text>
+        <Text style={screenStyles.subtitle}>Create new account</Text>
       </View>
 
       <Input
         mode="outlined"
-        label="Email Address"
+        label="Full name"
+        placeholder="e.g. John Doe"
+        onChangeText={(val: any) => {
+          // setValue('fullName', text, {shouldValidate: true});
+          setFullName(val);
+        }}
+        // error={errors.fullName}
+      />
+
+      <Input
+        mode="outlined"
+        label="Email address"
         placeholder="e.g. youremail@happymoney.com"
         onChangeText={(val: any) => {
           // setValue('email', text, {shouldValidate: true});
@@ -71,6 +85,20 @@ const Layout = (props: Props) => {
         // error={errors.password}
       />
 
+      <Input
+        mode="outlined"
+        label="Confirm password"
+        placeholder="Confirm your password"
+        type="password"
+        secureTextEntry={securePass}
+        onSecure={() => setSecurePass(!securePass)}
+        onChangeText={(val: any) => {
+          // setValue('confirmPass', text, {shouldValidate: true});
+          setConfirmPass(val);
+        }}
+        // error={errors.confirmPass}
+      />
+
       <View style={screenStyles.action}>
         <View style={screenStyles.btnWrapper}>
           <Button
@@ -79,13 +107,13 @@ const Layout = (props: Props) => {
             style={{marginBottom: Mixins.scaleSize(20)}}
             onPress={() => navigation.replace('HomeNav')}
           >
-            Sign In
+            Sign Up
           </Button>
         </View>
         <View style={screenStyles.textActionWrapper}>
-          <Text style={screenStyles.textAction}>Don't have account? </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-            <Text style={screenStyles.linkSignUp}>Sign Up</Text>
+          <Text style={screenStyles.textAction}>Already have an account? </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+            <Text style={screenStyles.linkSignIn}>Sign In</Text>
           </TouchableOpacity>
         </View>
       </View>

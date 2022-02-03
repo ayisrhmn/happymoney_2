@@ -1,6 +1,6 @@
 {
   "name": "happymoney_2",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -16,6 +16,7 @@
     "clean:android": "cd android && ./gradlew clean && cd ../"
   },
   "dependencies": {
+    "@react-navigation/material-bottom-tabs": "^6.1.1",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.4.0",
     "axios": "^0.25.0",

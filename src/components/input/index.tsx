@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import {TextInput} from 'react-native-paper';
 
-import {Colors, Mixins} from '@utils/index';
+import {Colors, Mixins, Typography} from '@utils/index';
 
 interface Props {
   mode?: 'flat' | 'outlined';
@@ -36,6 +36,11 @@ const inputTheme: any = {
     primary: Colors.PRIMARY.green,
     placeholder: Colors.PRIMARY.darkBlue,
     text: Colors.SECONDARY.darkBlue,
+  },
+  fonts: {
+    regular: {
+      fontFamily: Typography.FONT_FAMILY.regular,
+    },
   },
 };
 

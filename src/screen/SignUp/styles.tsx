@@ -25,5 +25,5 @@ export const screenStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   textAction: Typography.textStyle('primary', 'regular', 14),
-  linkSignUp: Typography.textStyle('green', 'bold', 14),
+  linkSignIn: Typography.textStyle('green', 'bold', 14),
 });

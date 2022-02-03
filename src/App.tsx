@@ -15,22 +15,28 @@ import {Provider as PaperProvider, DefaultTheme} from 'react-native-paper';
 import FlashMessage from 'react-native-flash-message';
 
 import {store} from '@overmind/index';
-import {Colors} from '@utils/index';
+import {Colors, Typography} from '@utils/index';
 import StackNavigation from '@navigations/stack-navigation';
 
 import moment from 'moment';
 import 'moment/locale/en-gb';
 
 const App = () => {
-  const theme = {
+  const theme: any = {
     ...DefaultTheme,
     roundness: 10,
     colors: {
       ...DefaultTheme.colors,
       primary: Colors.PRIMARY.darkBlue,
     },
+    fonts: {
+      ...DefaultTheme.fonts,
+      regular: {
+        fontFamily: Typography.FONT_FAMILY.bold,
+      },
+    },
   };
-  
+
   moment.locale('en');
 
   return (

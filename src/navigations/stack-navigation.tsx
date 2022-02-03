@@ -8,11 +8,13 @@ import Header from '@components/header';
 import Splash from '@screen/Splash';
 import GetStarted from '@screen/GetStarted';
 import SignIn from '@screen/SignIn';
-import Home from '@screen/Home';
+import SignUp from '@screen/SignUp';
+
+import HomeNav from 'navigations/home-navigation';
 
 const Stack = createNativeStackNavigator();
 
-function App() {
+const StackNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -46,10 +48,18 @@ function App() {
         />
 
         <Stack.Screen
-          name="Home"
-          component={Home}
+          name="SignUp"
+          component={SignUp}
           options={{
-            headerTitle: 'Happy Money v2',
+            headerTitle: '',
+          }}
+        />
+
+        <Stack.Screen
+          name="HomeNav"
+          component={HomeNav}
+          options={{
+            headerShown: false,
           }}
         />
       </Stack.Navigator>
@@ -57,4 +67,4 @@ function App() {
   );
 }
 
-export default App;
+export default StackNavigation;

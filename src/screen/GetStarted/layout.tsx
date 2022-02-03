@@ -37,7 +37,7 @@ const Layout = (props: Props) => {
       <Button
         mode="outlined"
         uppercase={false}
-        onPress={() => console.log('pressed!')}
+        onPress={() => navigation.navigate('SignUp')}
       >
         Sign Up
       </Button>

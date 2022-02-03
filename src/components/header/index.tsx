@@ -1,6 +1,5 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {StyleSheet} from 'react-native';
 import {Appbar} from 'react-native-paper';
 
 import {Colors, Mixins, Typography} from '@utils/index';
@@ -43,12 +42,12 @@ const Header = (props: Props) => {
         <Appbar.BackAction
           onPress={() => {
             if (['SignIn', 'SignUp'].indexOf(route.name) < 0) {
-              navigation.navigate('GetStarted');
-            } else {
               navigation.goBack();
+            } else {
+              navigation.navigate('GetStarted');
             }
           }}
-          color={Colors.SECONDARY.darkBlue}
+          color={Colors.PRIMARY.darkBlue}
           size={Mixins.scaleFont(28)}
         />
       )}

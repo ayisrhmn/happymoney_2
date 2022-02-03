@@ -1,7 +1,7 @@
 type State = {
-  welcome: string;
+  userInfo: any;
 };
 
 export const state: State = {
-  welcome: '',
+  userInfo: {},
 };
