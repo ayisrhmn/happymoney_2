@@ -12,7 +12,6 @@ import React from 'react';
 
 import {Provider as StoreProvider} from 'overmind-react';
 import {Provider as PaperProvider, DefaultTheme} from 'react-native-paper';
-import {StyleSheet, View, Text} from 'react-native';
 import FlashMessage from 'react-native-flash-message';
 
 import {store} from '@overmind/index';
@@ -25,7 +24,7 @@ import 'moment/locale/en-gb';
 const App = () => {
   const theme = {
     ...DefaultTheme,
-    roundness: 2,
+    roundness: 10,
     colors: {
       ...DefaultTheme.colors,
       primary: Colors.PRIMARY.darkBlue,
@@ -37,34 +36,11 @@ const App = () => {
   return (
     <StoreProvider value={store}>
       <PaperProvider theme={theme}>
-        {__DEV__ && (
-          <View style={s.badge}>
-            <Text style={s.badgeText}>DEV</Text>
-          </View>
-        )}
         <StackNavigation />
         <FlashMessage position="top" duration={3000} />
       </PaperProvider>
     </StoreProvider>
   );
 };
-
-const s = StyleSheet.create({
-  badge: {
-    position: 'absolute',
-    top: 10,
-    left: 10,
-    backgroundColor: 'red',
-    zIndex: 3,
-    borderRadius: 5,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    opacity: 0.7,
-  },
-  badgeText: {
-    fontSize: 8,
-    color: 'white',
-  },
-});
 
 export default App;
