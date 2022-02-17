@@ -5,7 +5,7 @@ import {Button} from 'react-native-paper';
 import {Colors, Mixins, Typography} from '@utils/index';
 
 interface Props {
-  children?: any;
+  children: any;
   mode?: 'text' | 'outlined' | 'contained';
   dark?: boolean;
   disabled?: boolean;
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const PaperButton = (props: Props) => {
-  const {mode, style, contentStyle, labelStyle} = props;
+  const {children, mode, style, contentStyle, labelStyle} = props;
 
   return (
     <Button
@@ -31,7 +31,7 @@ const PaperButton = (props: Props) => {
           : [styles.labelBtn, labelStyle]
       }
     >
-      {props?.children}
+      {children}
     </Button>
   );
 };

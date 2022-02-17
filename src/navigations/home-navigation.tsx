@@ -74,9 +74,9 @@ export default HomeNavigation;
 const styles = StyleSheet.create({
   barStyle: {
     backgroundColor: Colors.WHITE,
-    borderTopWidth: Mixins.scaleSize(1),
+    borderTopWidth: Mixins.scaleSize(0.7),
     borderTopColor: Colors.GREY,
-    borderBottomWidth: Mixins.scaleSize(1),
+    borderBottomWidth: Mixins.scaleSize(0.7),
     borderBottomColor: Colors.GREY,
   },
 });

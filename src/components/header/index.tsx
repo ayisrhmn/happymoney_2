@@ -61,7 +61,6 @@ const Header = (props: Props) => {
 const styles = StyleSheet.create({
   headerContainer: {
     backgroundColor: Colors.WHITE,
-    paddingHorizontal: Mixins.scaleSize(10),
     height: Mixins.scaleSize(52),
   },
   headerText: {

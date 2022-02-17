@@ -4,9 +4,9 @@ import {Avatar} from 'react-native-paper';
 import {Mixins, Typography} from '@utils/index';
 
 interface Props {
-  size?: any;
-  label?: any;
+  label: any;
   labelSize?: any;
+  size?: any;
   color?: string;
 }
 

@@ -8,7 +8,7 @@ import {screenStyles} from './styles';
 import {Colors, Helper, Mixins} from '@utils/index';
 
 interface Props {
-  navigation: any;
+  navigation?: any;
   fullName: string;
 }
 

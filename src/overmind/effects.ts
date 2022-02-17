@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const api = {
   getHome() {
     // let payload = {};
@@ -22,30 +24,35 @@ export const api = {
               category: 'Food',
               type: 'expense',
               value: 200000,
+              inputDate: moment().format('DD-MMM-YYYY'),
             },
             {
-              title: 'Data plan',
+              title: 'Data plan Indosat',
               category: 'Data plan',
               type: 'expense',
               value: 300000,
+              inputDate: moment().format('DD-MMM-YYYY'),
             },
             {
               title: 'Buy T-Shirt',
               category: 'Shopping',
               type: 'expense',
               value: 200000,
+              inputDate: moment().format('DD-MMM-YYYY'),
             },
             {
               title: 'Buy PS4 Games',
               category: 'Gaming',
               type: 'expense',
               value: 300000,
+              inputDate: moment().format('DD-MMM-YYYY'),
             },
             {
               title: 'Monthly salary',
               category: 'Salary',
               type: 'income',
               value: 5760000,
+              inputDate: moment().format('DD-MMM-YYYY'),
             },
           ],
         },

@@ -17,8 +17,8 @@ interface Props {
 
 const OverviewBar = (props: Props) => {
   const {
-    exPercentage,
-    inPercentage,
+    exPercentage = 0,
+    inPercentage = 0,
     exValue,
     inValue,
     withLabel = true,
@@ -79,12 +79,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   expenseBarLabel: {
-    fontSize: Mixins.scaleFont(12),
+    fontSize: Mixins.scaleFont(14),
     fontWeight: 'bold',
     color: Colors.DANGER,
   },
   incomeBarLabel: {
-    fontSize: Mixins.scaleFont(12),
+    fontSize: Mixins.scaleFont(14),
     fontWeight: 'bold',
     color: Colors.SUCCESS,
   },

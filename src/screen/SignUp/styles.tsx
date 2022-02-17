@@ -3,7 +3,7 @@ import {Colors, Mixins} from '@utils/index';
 
 export const screenStyles = StyleSheet.create({
   container: {
-    paddingHorizontal: Mixins.scaleSize(30),
+    paddingHorizontal: Mixins.scaleSize(24),
   },
   headerWrapper: {
     marginTop: Mixins.scaleSize(30),
