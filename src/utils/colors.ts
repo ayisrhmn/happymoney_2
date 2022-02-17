@@ -1,13 +1,14 @@
-export const PRIMARY = {
-  darkBlue: '#5E738E',
-  green: '#4FD79C',
-};
+export const PRIMARY = '#5E738E';
 
-export const SECONDARY = {
-  darkBlue: '#47576D',
-  green: '#7CF4A7',
+export const TEXT = {
+  primary: '#47576D',
+  secondary: '#A0A0A0',
+  darkBlue: '#5E738E',
 };
 
 export const WHITE = '#FFFFFF';
 export const GREY = '#A0A0A0';
-export const RED = '#FF8282';
+
+export const SUCCESS = '#4FD79C';
+export const WARNING = '#EDA623';
+export const DANGER = '#FF8282';

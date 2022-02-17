@@ -1,7 +1,7 @@
 type State = {
-  userInfo: any;
+  home: any;
 };
 
 export const state: State = {
-  userInfo: {},
+  home: {},
 };

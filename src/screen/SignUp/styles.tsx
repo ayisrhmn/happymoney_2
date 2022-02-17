@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Mixins, Typography} from '@utils/index';
+import {Colors, Mixins} from '@utils/index';
 
 export const screenStyles = StyleSheet.create({
   container: {
@@ -9,10 +9,16 @@ export const screenStyles = StyleSheet.create({
     marginTop: Mixins.scaleSize(30),
     marginBottom: Mixins.scaleSize(50),
   },
-  title: Typography.textStyle('primary', 'bold', 28, {
+  title: {
+    fontSize: Mixins.scaleFont(28),
+    fontWeight: 'bold',
+    color: Colors.TEXT.primary,
     marginBottom: Mixins.scaleSize(6),
-  }),
-  subtitle: Typography.textStyle('secondary', 'regular', 16),
+  },
+  subtitle: {
+    fontSize: Mixins.scaleFont(16),
+    color: Colors.TEXT.secondary,
+  },
   action: {
     marginVertical: Mixins.scaleSize(50),
   },
@@ -24,6 +30,13 @@ export const screenStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  textAction: Typography.textStyle('primary', 'regular', 14),
-  linkSignIn: Typography.textStyle('green', 'bold', 14),
+  textAction: {
+    fontSize: Mixins.scaleFont(14),
+    color: Colors.TEXT.primary,
+  },
+  linkSignIn: {
+    fontSize: Mixins.scaleFont(14),
+    fontWeight: 'bold',
+    color: Colors.SUCCESS,
+  },
 });

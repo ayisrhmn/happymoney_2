@@ -1,7 +1,7 @@
-export const getUserInfo = async (context: any) => {
-  let res = await context.effects.api.getUserInfo();
+export const getHome = async (context: any) => {
+  let res = await context.effects.api.getHome();
 
   if (res?.Success) {
-    context.state.userInfo = {...res?.Data};
+    context.state.home = {...res?.Data};
   }
 };

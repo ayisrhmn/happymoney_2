@@ -4,7 +4,7 @@ import {Text} from 'react-native-paper';
 
 import {useIsFocused} from '@react-navigation/native';
 import container from '@components/container';
-import {Mixins, Typography} from '@utils/index';
+import {Colors, Mixins} from '@utils/index';
 
 interface Props {
   navigation?: any;
@@ -36,5 +36,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: Mixins.scaleSize(30),
   },
-  sampleText: Typography.textStyle('primary', 'bold', 18),
+  sampleText: {
+    fontSize: Mixins.scaleFont(18),
+    fontWeight: 'bold',
+    color: Colors.TEXT.primary,
+  },
 });

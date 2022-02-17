@@ -1,5 +1,6 @@
 import React from 'react';
-import {Text, View, Image} from 'react-native';
+import {View, Image} from 'react-native';
+import {Text} from 'react-native-paper';
 
 import container from '@components/container';
 import Button from '@components/button';
@@ -18,8 +19,8 @@ const Layout = (props: Props) => {
   return (
     <View style={screenStyles.container}>
       <Image
-        source={images.logo}
-        style={screenStyles.logo}
+        source={images.wallet}
+        style={screenStyles.wallet}
         resizeMode="contain"
       />
       <Text style={screenStyles.greeting}>Hello!</Text>

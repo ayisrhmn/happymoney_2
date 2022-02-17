@@ -21,6 +21,7 @@ const StackNavigation = () => {
         initialRouteName="Splash"
         screenOptions={{
           header: props => <Header {...props} />,
+          animation: 'fade',
         }}
       >
         <Stack.Screen
@@ -65,6 +66,6 @@ const StackNavigation = () => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
 export default StackNavigation;

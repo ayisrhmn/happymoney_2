@@ -2,13 +2,12 @@ import React from 'react';
 import {
   GestureResponderEvent,
   View,
-  Text,
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import {TextInput} from 'react-native-paper';
+import {Text, TextInput} from 'react-native-paper';
 
-import {Colors, Mixins, Typography} from '@utils/index';
+import {Colors, Mixins} from '@utils/index';
 
 interface Props {
   mode?: 'flat' | 'outlined';
@@ -31,16 +30,10 @@ interface Props {
 }
 
 const inputTheme: any = {
-  roundness: 10,
   colors: {
-    primary: Colors.PRIMARY.green,
-    placeholder: Colors.PRIMARY.darkBlue,
-    text: Colors.SECONDARY.darkBlue,
-  },
-  fonts: {
-    regular: {
-      fontFamily: Typography.FONT_FAMILY.regular,
-    },
+    primary: Colors.SUCCESS,
+    placeholder: Colors.PRIMARY,
+    text: Colors.TEXT.primary,
   },
 };
 
@@ -95,17 +88,7 @@ const Input = (props: Props) => {
         </>
       )} */}
 
-      {error && (
-        <Text
-          style={{
-            fontSize: Mixins.scaleFont(12),
-            paddingTop: Mixins.scaleSize(3),
-            color: Colors.RED,
-          }}
-        >
-          {error.message}
-        </Text>
-      )}
+      {error && <Text style={styles.errorLabel}>{error.message}</Text>}
     </View>
   );
 };
@@ -115,7 +98,7 @@ const InputText = (props: Props) => {
     <TextInput
       {...props}
       placeholderTextColor={Colors.GREY}
-      selectionColor={Colors.SECONDARY.darkBlue}
+      selectionColor={Colors.PRIMARY}
       style={styles.input}
       theme={inputTheme}
       onFocus={() => props?.setFocus(true)}
@@ -129,7 +112,7 @@ const InputPassword = (props: Props) => {
     <TextInput
       {...props}
       placeholderTextColor={Colors.GREY}
-      selectionColor={Colors.SECONDARY.darkBlue}
+      selectionColor={Colors.PRIMARY}
       style={styles.input}
       theme={inputTheme}
       onFocus={() => props?.setFocus(true)}
@@ -137,7 +120,7 @@ const InputPassword = (props: Props) => {
       right={
         <TextInput.Icon
           name={props?.secureTextEntry ? 'eye-outline' : 'eye-off-outline'}
-          color={props?.focus ? Colors.PRIMARY.green : Colors.PRIMARY.darkBlue}
+          color={props?.focus ? Colors.SUCCESS : Colors.PRIMARY}
           onPress={props?.onSecure}
         />
       }
@@ -203,6 +186,11 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     zIndex: 3,
+  },
+  errorLabel: {
+    fontSize: Mixins.scaleFont(12),
+    paddingTop: Mixins.scaleSize(3),
+    color: Colors.DANGER,
   },
 });
 

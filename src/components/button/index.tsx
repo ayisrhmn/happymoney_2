@@ -39,14 +39,22 @@ const PaperButton = (props: Props) => {
 const styles = StyleSheet.create({
   btnContent: {
     width: Mixins.scaleSize(200),
-    height: Mixins.scaleSize(46),
+    height: Mixins.scaleSize(42),
   },
-  labelBtn: Typography.textStyle('white', 'bold', 18),
+  labelBtn: {
+    fontSize: Mixins.scaleFont(18),
+    fontFamily: Typography.FONT_FAMILY.bold,
+    color: Colors.WHITE,
+  },
   btnOutlinedPrimary: {
-    borderWidth: 1,
-    borderColor: Colors.PRIMARY.darkBlue,
+    borderWidth: Mixins.scaleSize(1),
+    borderColor: Colors.PRIMARY,
   },
-  labelDarkBtn: Typography.textStyle('darkblue', 'bold', 18),
+  labelDarkBtn: {
+    fontSize: Mixins.scaleFont(18),
+    fontFamily: Typography.FONT_FAMILY.bold,
+    color: Colors.TEXT.darkBlue,
+  },
 });
 
 export default PaperButton;

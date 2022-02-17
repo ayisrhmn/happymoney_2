@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  Text,
-  TouchableOpacity,
-  View,
-  ScrollView,
-  BackHandler,
-} from 'react-native';
+import {TouchableOpacity, View, ScrollView, BackHandler} from 'react-native';
+import {Text} from 'react-native-paper';
 
 import container from '@components/container';
 import Input from '@components/input';

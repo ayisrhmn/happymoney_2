@@ -15,7 +15,7 @@ import {Provider as PaperProvider, DefaultTheme} from 'react-native-paper';
 import FlashMessage from 'react-native-flash-message';
 
 import {store} from '@overmind/index';
-import {Colors, Typography} from '@utils/index';
+import {Colors, Mixins, Typography} from '@utils/index';
 import StackNavigation from '@navigations/stack-navigation';
 
 import moment from 'moment';
@@ -24,20 +24,22 @@ import 'moment/locale/en-gb';
 const App = () => {
   const theme: any = {
     ...DefaultTheme,
-    roundness: 10,
+    roundness: Mixins.scaleSize(10),
     colors: {
       ...DefaultTheme.colors,
-      primary: Colors.PRIMARY.darkBlue,
+      primary: Colors.PRIMARY,
     },
     fonts: {
       ...DefaultTheme.fonts,
       regular: {
-        fontFamily: Typography.FONT_FAMILY.bold,
+        fontFamily: Typography.FONT_FAMILY.regular,
       },
     },
   };
 
   moment.locale('en');
+
+  Typography.typography();
 
   return (
     <StoreProvider value={store}>

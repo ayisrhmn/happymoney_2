@@ -1,5 +1,6 @@
 import React from 'react';
-import {Text, View, Image} from 'react-native';
+import {View, Image} from 'react-native';
+import {Text} from 'react-native-paper';
 
 import container from '@components/container';
 import images from '@assets/images';

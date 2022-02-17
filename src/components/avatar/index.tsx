@@ -1,7 +1,7 @@
 import React from 'react';
 import {Avatar} from 'react-native-paper';
 
-import {Mixins} from '@utils/index';
+import {Mixins, Typography} from '@utils/index';
 
 interface Props {
   size?: any;
@@ -19,6 +19,7 @@ const PaperAvatar = (props: Props) => {
       label={label}
       labelStyle={{
         fontSize: labelSize,
+        fontFamily: Typography.FONT_FAMILY.bold,
       }}
       style={{
         backgroundColor: color,

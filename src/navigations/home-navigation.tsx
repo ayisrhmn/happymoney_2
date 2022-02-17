@@ -37,7 +37,7 @@ const HomeNavigation = (props: Props) => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      activeColor={Colors.PRIMARY.darkBlue}
+      activeColor={Colors.PRIMARY}
       inactiveColor={Colors.GREY}
       barStyle={styles.barStyle}
       screenOptions={({route}) => ({
@@ -74,9 +74,9 @@ export default HomeNavigation;
 const styles = StyleSheet.create({
   barStyle: {
     backgroundColor: Colors.WHITE,
-    borderTopWidth: 0.2,
+    borderTopWidth: Mixins.scaleSize(1),
     borderTopColor: Colors.GREY,
-    borderBottomWidth: 0.2,
+    borderBottomWidth: Mixins.scaleSize(1),
     borderBottomColor: Colors.GREY,
   },
 });

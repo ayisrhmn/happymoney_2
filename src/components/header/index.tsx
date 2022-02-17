@@ -47,7 +47,7 @@ const Header = (props: Props) => {
               navigation.navigate('GetStarted');
             }
           }}
-          color={Colors.PRIMARY.darkBlue}
+          color={Colors.PRIMARY}
           size={Mixins.scaleFont(28)}
         />
       )}
@@ -64,9 +64,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: Mixins.scaleSize(10),
     height: Mixins.scaleSize(52),
   },
-  headerText: Typography.textStyle('primary', 'bold', 20, {
+  headerText: {
+    fontSize: Mixins.scaleFont(20),
+    fontFamily: Typography.FONT_FAMILY.bold,
+    color: Colors.TEXT.primary,
     marginLeft: Mixins.scaleSize(-10),
-  }),
+  },
 });
 
 export default Header;

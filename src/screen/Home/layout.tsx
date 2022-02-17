@@ -1,14 +1,18 @@
 import React from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {Text} from 'react-native-paper';
 
 import {useActions, useAppState} from '@overmind/index';
 import {useIsFocused} from '@react-navigation/native';
 import container, {ContainerContext} from '@components/container';
-import Avatar from '@components/avatar';
-import {Colors, Helper, Mixins, Typography} from '@utils/index';
+import {Colors, Helper, Mixins} from '@utils/index';
+
+import {screenStyles} from './styles';
+import UserInfo from './user-info';
+import OverviewCard from './overview-card';
 
 interface Props {
-  navigation?: any;
+  navigation: any;
 }
 
 const Layout = (props: Props) => {
@@ -16,13 +20,13 @@ const Layout = (props: Props) => {
   const isFocused = useIsFocused();
   const ctx = React.useContext(ContainerContext);
 
-  const {getUserInfo} = useActions();
-  const {userInfo} = useAppState();
+  const {getHome} = useActions();
+  const {home} = useAppState();
 
   React.useLayoutEffect(() => {
     ctx.setRefreshCallback({
       func: async () => {
-        getUserInfo();
+        getHome();
       },
     });
 
@@ -31,27 +35,40 @@ const Layout = (props: Props) => {
 
   React.useEffect(() => {
     if (isFocused) {
-      getUserInfo();
+      getHome();
     }
 
     return () => {};
   }, [navigation, isFocused]);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.userInfo}>
-        <View style={styles.welcome}>
-          <Text style={styles.welcomeText}>Welcome,</Text>
-          <Text style={styles.nameText}>{userInfo?.fullName}</Text>
-        </View>
-        <TouchableOpacity onPress={() => console.log('go to profile page!')}>
-          <Avatar
-            size={Mixins.scaleSize(56)}
-            labelSize={Mixins.scaleFont(24)}
-            label={Helper.getInitialName(userInfo?.fullName?.toUpperCase())}
-            color={Colors.PRIMARY.darkBlue}
-          />
-        </TouchableOpacity>
+    <View style={screenStyles.container}>
+      <UserInfo navigation={navigation} fullName={home.user?.fullName} />
+
+      {home.overview !== undefined && (
+        <OverviewCard navigation={navigation} data={home.overview} />
+      )}
+
+      <View>
+        <Text style={styles.recentTitle}>Recent Transactions</Text>
+        {home.recentTransactions?.map((item: any, i: number) => (
+          <View style={styles.itemTransaction} key={i}>
+            <View>
+              <Text style={styles.itemTitle}>{item.title}</Text>
+              <Text style={styles.itemCategory}>{item.category}</Text>
+            </View>
+
+            {item.type === 'income' ? (
+              <Text style={styles.itemInValue}>
+                {`+ ${Helper.numberWithSeparator(item.value)}`}
+              </Text>
+            ) : (
+              <Text style={styles.itemExValue}>
+                {`- ${Helper.numberWithSeparator(item.value)}`}
+              </Text>
+            )}
+          </View>
+        ))}
       </View>
     </View>
   );
@@ -60,22 +77,35 @@ const Layout = (props: Props) => {
 export default container(Layout);
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: Mixins.scaleSize(30),
+  recentTitle: {
+    fontSize: Mixins.scaleFont(16),
+    color: Colors.TEXT.secondary,
+    marginBottom: Mixins.scaleSize(20),
   },
-  loader: {
-    height: Mixins.WINDOW_HEIGHT - Mixins.scaleSize(50),
-  },
-  userInfo: {
+  itemTransaction: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: Mixins.scaleSize(30),
+    alignItems: 'center',
+    marginBottom: Mixins.scaleSize(18),
   },
-  welcome: {
-    justifyContent: 'center',
+  itemTitle: {
+    fontSize: Mixins.scaleFont(14),
+    fontWeight: 'bold',
+    color: Colors.TEXT.primary,
+    marginBottom: Mixins.scaleSize(4),
   },
-  welcomeText: Typography.textStyle('secondary', 'regular', 14, {
-    marginBottom: Mixins.scaleSize(6),
-  }),
-  nameText: Typography.textStyle('primary', 'bold', 16),
+  itemCategory: {
+    fontSize: Mixins.scaleFont(14),
+    color: Colors.TEXT.secondary,
+  },
+  itemExValue: {
+    fontSize: Mixins.scaleFont(14),
+    fontWeight: 'bold',
+    color: Colors.DANGER,
+  },
+  itemInValue: {
+    fontSize: Mixins.scaleFont(14),
+    fontWeight: 'bold',
+    color: Colors.SUCCESS,
+  },
 });

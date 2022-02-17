@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Mixins, Typography} from '@utils/index';
+import {Colors, Mixins} from '@utils/index';
 
 export const screenStyles = StyleSheet.create({
   container: {
@@ -12,10 +12,14 @@ export const screenStyles = StyleSheet.create({
     height: Mixins.scaleSize(146),
     marginBottom: Mixins.scaleSize(21),
   },
-  title: Typography.textStyle('primary', 'bold', 28, {
-    marginBottom: Mixins.scaleSize(5),
-  }),
-  tagline: Typography.textStyle('primary', 'regular', 16, {
-    fontStyle: 'italic',
-  }),
+  title: {
+    fontSize: Mixins.scaleFont(28),
+    fontWeight: 'bold',
+    color: Colors.TEXT.primary,
+    marginBottom: Mixins.scaleSize(8),
+  },
+  tagline: {
+    fontSize: Mixins.scaleFont(16),
+    color: Colors.TEXT.primary,
+  },
 });
