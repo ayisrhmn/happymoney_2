@@ -3,9 +3,9 @@ import {View, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper';
 
 import Avatar from '@components/avatar';
+import {Colors, Helper, Mixins} from '@utils/index';
 
 import {screenStyles} from './styles';
-import {Colors, Helper, Mixins} from '@utils/index';
 
 interface Props {
   navigation?: any;

@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   containerStyle: {
     backgroundColor: Colors.WHITE,
     margin: Mixins.scaleSize(30),
-    borderRadius: Mixins.scaleSize(4),
+    borderRadius: Mixins.scaleSize(10),
   },
   close: {
     position: 'absolute',

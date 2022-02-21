@@ -4,10 +4,9 @@ import {Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import {Colors, Helper, Mixins} from '@utils/index';
+import images from '@assets/images';
 
 import {screenStyles} from './styles';
-import moment from 'moment';
-import images from 'assets/images';
 
 interface Props {
   navigation?: any;

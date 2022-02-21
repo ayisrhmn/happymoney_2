@@ -17,6 +17,7 @@ import FlashMessage from 'react-native-flash-message';
 import {store} from '@overmind/index';
 import {Colors, Mixins, Typography} from '@utils/index';
 import StackNavigation from '@navigations/stack-navigation';
+import ModalDatePicker from '@components/modal-datepicker';
 
 import moment from 'moment';
 import 'moment/locale/en-gb';
@@ -45,6 +46,7 @@ const App = () => {
     <StoreProvider value={store}>
       <PaperProvider theme={theme}>
         <StackNavigation />
+        <ModalDatePicker />
         <FlashMessage position="top" duration={3000} />
       </PaperProvider>
     </StoreProvider>

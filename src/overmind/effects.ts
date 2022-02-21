@@ -59,4 +59,39 @@ export const api = {
       });
     });
   },
+  getAnalytics() {
+    // let payload = {};
+    // return http.post('/path/to/api', payload);
+    return new Promise(function (resolve) {
+      resolve({
+        Success: true,
+        Data: {
+          income: [
+            {
+              category: 'Salary',
+              value: 5760000,
+            },
+          ],
+          expense: [
+            {
+              category: 'Data plan',
+              value: 300000,
+            },
+            {
+              category: 'Gaming',
+              value: 300000,
+            },
+            {
+              category: 'Food',
+              value: 200000,
+            },
+            {
+              category: 'Shopping',
+              value: 200000,
+            },
+          ],
+        },
+      });
+    });
+  },
 };

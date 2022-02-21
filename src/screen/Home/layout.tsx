@@ -25,7 +25,7 @@ const Layout = (props: Props) => {
   React.useLayoutEffect(() => {
     ctx.setRefreshCallback({
       func: async () => {
-        getHome();
+        console.warn('from home');
       },
     });
 

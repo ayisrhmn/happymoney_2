@@ -5,27 +5,36 @@ export const screenStyles = StyleSheet.create({
   container: {
     paddingHorizontal: Mixins.scaleSize(24),
   },
-  row: {
-    flexDirection: 'row',
-  },
-  userInfo: {
+  headerTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: Mixins.scaleSize(24),
-    marginBottom: Mixins.scaleSize(30),
+    marginBottom: Mixins.scaleSize(16),
   },
-  welcome: {
-    justifyContent: 'center',
-  },
-  welcomeText: {
-    fontSize: Mixins.scaleFont(16),
-    color: Colors.TEXT.secondary,
-    marginBottom: Mixins.scaleSize(6),
-  },
-  nameText: {
+  title: {
     fontSize: Mixins.scaleFont(18),
     fontWeight: 'bold',
     color: Colors.TEXT.primary,
+    textAlignVertical: 'center',
+    marginBottom: Mixins.scaleSize(6),
+  },
+  dateText: {
+    fontSize: Mixins.scaleFont(14),
+    color: Colors.TEXT.secondary,
+    textAlignVertical: 'center',
+    marginLeft: Mixins.scaleSize(3),
+  },
+  chartWrapper: {
+    alignItems: 'center',
+    marginBottom: Mixins.scaleSize(30),
+  },
+  listWrapper: {
+    marginBottom: Mixins.scaleSize(14),
+  },
+  listTitle: {
+    fontSize: Mixins.scaleFont(16),
+    color: Colors.TEXT.secondary,
+    marginBottom: Mixins.scaleSize(16),
   },
   card: {
     backgroundColor: Colors.WHITE,
@@ -41,51 +50,6 @@ export const screenStyles = StyleSheet.create({
     shadowRadius: Mixins.scaleSize(2.22),
     elevation: Mixins.scaleSize(3),
   },
-  cardHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: Mixins.scaleSize(16),
-  },
-  sectionWrapper: {
-    marginBottom: Mixins.scaleSize(14),
-  },
-  overviewText: {
-    fontSize: Mixins.scaleFont(16),
-    fontWeight: 'bold',
-    color: Colors.TEXT.primary,
-  },
-  dateText: {
-    fontSize: Mixins.scaleFont(14),
-    color: Colors.TEXT.secondary,
-    textAlignVertical: 'center',
-    marginLeft: Mixins.scaleSize(3),
-  },
-  balanceText: {
-    fontSize: Mixins.scaleFont(14),
-    color: Colors.TEXT.secondary,
-    marginBottom: Mixins.scaleSize(6),
-  },
-  balanceWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  balanceValue: {
-    fontSize: Mixins.scaleFont(20),
-    fontWeight: 'bold',
-    color: Colors.TEXT.primary,
-  },
-  btnAddTransaction: {
-    backgroundColor: Colors.SUCCESS,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: Mixins.scaleSize(30),
-    height: Mixins.scaleSize(42),
-  },
-  recentTitle: {
-    fontSize: Mixins.scaleFont(16),
-    color: Colors.TEXT.secondary,
-    marginBottom: Mixins.scaleSize(16),
-  },
   itemTransaction: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -95,13 +59,6 @@ export const screenStyles = StyleSheet.create({
     fontSize: Mixins.scaleFont(16),
     fontWeight: 'bold',
     color: Colors.TEXT.primary,
-    marginBottom: Mixins.scaleSize(4),
-  },
-  itemContent: {
-    fontSize: Mixins.scaleFont(14),
-    color: Colors.TEXT.secondary,
-    textAlignVertical: 'center',
-    marginLeft: Mixins.scaleSize(6),
   },
   itemExValue: {
     fontSize: Mixins.scaleFont(16),
