@@ -34,3 +34,11 @@ export const getAnalytics = async (context: any) => {
     context.state.analytics = {...res?.Data};
   }
 };
+
+export const getAnalyticsDetail = async (context: any) => {
+  let res = await context.effects.api.getAnalyticsDetail();
+
+  if (res?.Success) {
+    context.state.analyticsDetail = [...res?.Data];
+  }
+};

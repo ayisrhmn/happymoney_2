@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import {Image, TouchableOpacity, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -8,8 +8,9 @@ import {useActions, useAppState} from '@overmind/index';
 import container, {ContainerContext} from '@components/container';
 import SwitchButton from '@components/switch';
 import {Colors, Helper, Mixins, Typography} from '@utils/index';
+import images from '@assets/images';
 
-import {VictoryPie} from 'victory-native';
+import {VictoryPie, VictoryTheme} from 'victory-native';
 import {screenStyles} from './styles';
 
 interface Props {
@@ -41,15 +42,6 @@ const Layout = (props: Props) => {
 
     return () => {};
   }, [navigation, isFocused]);
-
-  const colorScale = () => {
-    const exDataColor = ['#DE3535', '#FF5454', '#FF8282', '#FFA1A1', '#FFC2C2'];
-    const inDataColor = ['#37A173', '#41BA86', '#4FD79C', '#6FE8B4', '#8DFCCD'];
-
-    let dataColor = valSwitch ? exDataColor : inDataColor;
-
-    return dataColor;
-  };
 
   const chartData = (data: any) => {
     let analyticData = valSwitch ? data?.expense : data?.income;
@@ -130,44 +122,66 @@ const Layout = (props: Props) => {
         />
       </View>
 
-      <View style={screenStyles.chartWrapper}>
-        <VictoryPie
-          height={Mixins.scaleSize(280)}
-          colorScale={colorScale()}
-          data={chartData(analytics)}
-          animate={{duration: 800}}
-          innerRadius={56}
-          style={{
-            labels: {
-              fontSize: Mixins.scaleSize(14),
-              fontFamily: Typography.FONT_FAMILY.regular,
-              fill:
-                chartData(analytics) !== undefined
-                  ? Colors.PRIMARY
-                  : 'transparent',
-            },
-          }}
-        />
-      </View>
-
-      <View style={screenStyles.listWrapper}>
-        <Text style={screenStyles.listTitle}>10 Category by Expenses</Text>
-        {filterData(analytics)?.map((item: any, i: number) => (
-          <View
-            style={
-              i >= 3
-                ? screenStyles.card
-                : {
-                    ...screenStyles.card,
-                    backgroundColor: valSwitch ? Colors.DANGER : Colors.SUCCESS,
-                  }
-            }
-            key={i}
-          >
-            {cardContent(item, i)}
+      {filterData(analytics)?.length !== 0 ? (
+        <>
+          <View style={screenStyles.chartWrapper}>
+            <VictoryPie
+              height={Mixins.scaleSize(280)}
+              theme={VictoryTheme.material}
+              data={chartData(analytics)}
+              animate={{duration: 800}}
+              innerRadius={56}
+              style={{
+                labels: {
+                  fontSize: Mixins.scaleSize(14),
+                  fontFamily: Typography.FONT_FAMILY.regular,
+                  fill:
+                    chartData(analytics) !== undefined
+                      ? Colors.PRIMARY
+                      : 'transparent',
+                },
+              }}
+            />
           </View>
-        ))}
-      </View>
+
+          <View style={screenStyles.listWrapper}>
+            <Text style={screenStyles.listTitle}>
+              Largest {valSwitch ? 'expense' : 'income'} by category
+            </Text>
+            {filterData(analytics)?.map((item: any, i: number) => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('AnalyticsDetail')}
+                activeOpacity={0.7}
+                key={i}
+              >
+                <View
+                  style={
+                    i >= 3
+                      ? screenStyles.card
+                      : {
+                          ...screenStyles.card,
+                          backgroundColor: valSwitch
+                            ? Colors.DANGER
+                            : Colors.SUCCESS,
+                        }
+                  }
+                >
+                  {cardContent(item, i)}
+                </View>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </>
+      ) : (
+        <View style={screenStyles.emptyWrapper}>
+          <Image
+            source={images.empty}
+            style={screenStyles.empty}
+            resizeMode="contain"
+          />
+          <Text style={screenStyles.emptyLabel}>No transaction data</Text>
+        </View>
+      )}
     </View>
   );
 };

@@ -10,7 +10,9 @@ import GetStarted from '@screen/GetStarted';
 import SignIn from '@screen/SignIn';
 import SignUp from '@screen/SignUp';
 
-import HomeNav from 'navigations/home-navigation';
+import HomeNav from '@navigations/home-navigation';
+
+import AnalyticsDetail from '@screen/Analytics/detail';
 
 const Stack = createNativeStackNavigator();
 
@@ -61,6 +63,14 @@ const StackNavigation = () => {
           component={HomeNav}
           options={{
             headerShown: false,
+          }}
+        />
+
+        <Stack.Screen
+          name="AnalyticsDetail"
+          component={AnalyticsDetail}
+          options={{
+            headerTitle: 'Analytics Detail',
           }}
         />
       </Stack.Navigator>
