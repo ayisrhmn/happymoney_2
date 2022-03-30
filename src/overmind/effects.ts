@@ -20,10 +20,17 @@ export const api = {
           },
           recentTransactions: [
             {
+              title: 'Buy some snacks',
+              category: 'Snack',
+              type: 'expense',
+              value: 100000,
+              inputDate: moment().format('DD-MMM-YYYY'),
+            },
+            {
               title: 'Have a lunch',
               category: 'Food',
               type: 'expense',
-              value: 200000,
+              value: 100000,
               inputDate: moment().format('DD-MMM-YYYY'),
             },
             {
@@ -82,12 +89,16 @@ export const api = {
               value: 300000,
             },
             {
-              category: 'Food',
+              category: 'Shopping',
               value: 200000,
             },
             {
-              category: 'Shopping',
-              value: 200000,
+              category: 'Food',
+              value: 100000,
+            },
+            {
+              category: 'Snack',
+              value: 100000,
             },
           ],
         },
@@ -102,10 +113,17 @@ export const api = {
         Success: true,
         Data: [
           {
+            title: 'Buy some snacks',
+            category: 'Snack',
+            type: 'expense',
+            value: 100000,
+            inputDate: moment().format('DD-MMM-YYYY'),
+          },
+          {
             title: 'Have a lunch',
             category: 'Food',
             type: 'expense',
-            value: 200000,
+            value: 100000,
             inputDate: moment().format('DD-MMM-YYYY'),
           },
           {
@@ -137,6 +155,46 @@ export const api = {
             inputDate: moment().format('DD-MMM-YYYY'),
           },
         ],
+      });
+    });
+  },
+  getCategory() {
+    // let payload = {};
+    // return http.post('/path/to/api', payload);
+    return new Promise(function (resolve) {
+      resolve({
+        Success: true,
+        Data: [
+          {
+            name: 'Salary',
+            type: 'income',
+          },
+          {
+            name: 'Gaming',
+            type: 'expense',
+            ex_limit: 0,
+          },
+          {
+            name: 'Shopping',
+            type: 'expense',
+            ex_limit: 0,
+          },
+          {
+            name: 'Data plan',
+            type: 'expense',
+            ex_limit: 300000,
+          },
+          {
+            name: 'Food',
+            type: 'expense',
+            ex_limit: 0,
+          },
+          {
+            name: 'Snack',
+            type: 'expense',
+            ex_limit: 0,
+          },
+        ]
       });
     });
   },

@@ -13,6 +13,7 @@ import SignUp from '@screen/SignUp';
 import HomeNav from '@navigations/home-navigation';
 
 import AnalyticsDetail from '@screen/Analytics/detail';
+import AnalyticsListCategory from '@screen/Analytics/list-category';
 
 const Stack = createNativeStackNavigator();
 
@@ -71,6 +72,14 @@ const StackNavigation = () => {
           component={AnalyticsDetail}
           options={{
             headerTitle: 'Analytics Detail',
+          }}
+        />
+
+        <Stack.Screen
+          name="AnalyticsListCategory"
+          component={AnalyticsListCategory}
+          options={{
+            headerTitle: 'List Category',
           }}
         />
       </Stack.Navigator>

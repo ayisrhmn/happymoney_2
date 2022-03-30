@@ -8,6 +8,7 @@ type State = {
   displayDate: string;
   selectedMonth: string;
   analyticsDetail: any;
+  category: any;
 };
 
 export const state: State = {
@@ -18,4 +19,5 @@ export const state: State = {
   displayDate: moment(new Date()).locale('en').format('MMM YYYY'),
   selectedMonth: moment().format('YYYY/MM'),
   analyticsDetail: [],
+  category: [],
 };

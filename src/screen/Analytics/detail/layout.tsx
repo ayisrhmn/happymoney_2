@@ -25,57 +25,61 @@ const Layout = (props: Props) => {
     return () => {};
   }, [navigation]);
 
-  const renderItem = ({item}: any) => (
-    <View style={screenStyles.card}>
-      <View style={screenStyles.itemTransaction}>
-        <View>
-          <Text style={screenStyles.itemTitle}>{item.title}</Text>
-          <View
-            style={{
-              ...screenStyles.row,
-              marginBottom: Mixins.scaleSize(4),
-            }}
-          >
-            <Icon
-              name="briefcase-outline"
-              size={Mixins.scaleFont(18)}
-              color={Colors.TEXT.secondary}
-            />
-            <Text style={screenStyles.itemContent}>{item.category}</Text>
+  const renderItem = ({item, index}: any) => (
+    <View
+      style={
+        index === 0
+          ? {...screenStyles.sectionCard, marginTop: Mixins.scaleSize(14)}
+          : screenStyles.sectionCard
+      }
+    >
+      <View style={screenStyles.card}>
+        <View style={screenStyles.itemTransaction}>
+          <View>
+            <Text style={screenStyles.itemTitle}>{item.title}</Text>
+            <View
+              style={{
+                ...screenStyles.row,
+                marginBottom: Mixins.scaleSize(4),
+              }}
+            >
+              <Icon
+                name="briefcase-outline"
+                size={Mixins.scaleFont(18)}
+                color={Colors.TEXT.secondary}
+              />
+              <Text style={screenStyles.itemContent}>{item.category}</Text>
+            </View>
+            <View style={screenStyles.row}>
+              <Icon
+                name="time-outline"
+                size={Mixins.scaleFont(18)}
+                color={Colors.TEXT.secondary}
+              />
+              <Text style={screenStyles.itemContent}>{item.inputDate}</Text>
+            </View>
           </View>
-          <View style={screenStyles.row}>
-            <Icon
-              name="time-outline"
-              size={Mixins.scaleFont(18)}
-              color={Colors.TEXT.secondary}
-            />
-            <Text style={screenStyles.itemContent}>{item.inputDate}</Text>
-          </View>
-        </View>
 
-        {item.type === 'income' ? (
-          <Text style={screenStyles.itemInValue}>
-            {`+ ${Helper.numberWithSeparator(item.value)}`}
-          </Text>
-        ) : (
-          <Text style={screenStyles.itemExValue}>
-            {`- ${Helper.numberWithSeparator(item.value)}`}
-          </Text>
-        )}
+          {item.type === 'income' ? (
+            <Text style={screenStyles.itemInValue}>
+              {`+ ${Helper.numberWithSeparator(item.value)}`}
+            </Text>
+          ) : (
+            <Text style={screenStyles.itemExValue}>
+              {`- ${Helper.numberWithSeparator(item.value)}`}
+            </Text>
+          )}
+        </View>
       </View>
     </View>
   );
 
   return (
-    <View style={screenStyles.container}>
-      <View style={screenStyles.sectionWrapper}>
-        <FlatList
-          data={analyticsDetail}
-          renderItem={renderItem}
-          keyExtractor={(item: any, i: number) => `${item.title}_${i}`}
-        />
-      </View>
-    </View>
+    <FlatList
+      data={analyticsDetail}
+      renderItem={renderItem}
+      keyExtractor={(item: any, i: number) => `${item.title}_${i}`}
+    />
   );
 };
 

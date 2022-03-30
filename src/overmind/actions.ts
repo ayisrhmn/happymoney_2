@@ -42,3 +42,11 @@ export const getAnalyticsDetail = async (context: any) => {
     context.state.analyticsDetail = [...res?.Data];
   }
 };
+
+export const getCategory = async (context: any) => {
+  let res = await context.effects.api.getCategory();
+
+  if (res?.Success) {
+    context.state.category = [...res?.Data];
+  }
+};

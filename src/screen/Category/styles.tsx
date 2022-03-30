@@ -5,6 +5,9 @@ export const screenStyles = StyleSheet.create({
   container: {
     paddingHorizontal: Mixins.scaleSize(24),
   },
+  row: {
+    flexDirection: 'row',
+  },
   headerTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -18,18 +21,8 @@ export const screenStyles = StyleSheet.create({
     textAlignVertical: 'center',
     marginBottom: Mixins.scaleSize(6),
   },
-  dateText: {
-    fontSize: Mixins.scaleFont(14),
-    color: Colors.TEXT.secondary,
-    textAlignVertical: 'center',
-    marginLeft: Mixins.scaleSize(3),
-  },
-  chartWrapper: {
-    alignItems: 'center',
-    marginBottom: Mixins.scaleSize(30),
-  },
-  listWrapper: {
-    marginBottom: Mixins.scaleSize(14),
+  listSection: {
+    marginBottom: Mixins.scaleSize(12),
   },
   listTitle: {
     fontSize: Mixins.scaleFont(16),
@@ -58,38 +51,24 @@ export const screenStyles = StyleSheet.create({
   itemTitle: {
     fontSize: Mixins.scaleFont(16),
     fontWeight: 'bold',
-    color: Colors.WHITE,
+    color: Colors.TEXT.primary,
   },
-  itemExValue: {
-    fontSize: Mixins.scaleFont(16),
-    fontWeight: 'bold',
-    color: Colors.WHITE,
+  exLimitText: {
+    color: Colors.TEXT.secondary,
+    fontSize: Mixins.scaleFont(11),
+    marginTop: Mixins.scaleSize(3),
   },
-  itemInValue: {
-    fontSize: Mixins.scaleFont(16),
-    fontWeight: 'bold',
-    color: Colors.WHITE,
-  },
-  emptyWrapper: {
-    marginTop: Mixins.scaleSize(20),
+  addBtn: {
+    backgroundColor: Colors.SUCCESS,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: Mixins.scaleSize(10),
+    paddingVertical: Mixins.scaleSize(6),
+    borderRadius: Mixins.scaleSize(50),
   },
-  empty: {
-    width: Mixins.scaleSize(240),
-    height: Mixins.scaleSize(140),
-  },
-  emptyLabel: {
-    fontSize: Mixins.scaleFont(16),
-    fontWeight: 'bold',
-    color: Colors.PRIMARY,
-    marginTop: Mixins.scaleSize(20),
-  },
-  seeAllLink: {
-    textAlign: 'center',
-    color: Colors.TEXT.primary,
+  labelAdd: {
     fontSize: Mixins.scaleFont(12),
     fontWeight: 'bold',
-    marginBottom: Mixins.scaleSize(8),
+    color: Colors.WHITE,
   },
 });

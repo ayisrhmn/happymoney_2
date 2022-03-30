@@ -10,7 +10,7 @@ import SwitchButton from '@components/switch';
 import {Colors, Helper, Mixins, Typography} from '@utils/index';
 import images from '@assets/images';
 
-import {VictoryPie, VictoryTheme} from 'victory-native';
+import {VictoryPie} from 'victory-native';
 import {screenStyles} from './styles';
 
 interface Props {
@@ -43,6 +43,15 @@ const Layout = (props: Props) => {
     return () => {};
   }, [navigation, isFocused]);
 
+  const colorScale = () => {
+    const exDataColor = ['#DE3535', '#FF5454', '#FF8282', '#FFA1A1', '#FFC2C2'];
+    const inDataColor = ['#37A173', '#41BA86', '#4FD79C', '#6FE8B4', '#8DFCCD'];
+
+    let dataColor = valSwitch ? exDataColor : inDataColor;
+
+    return dataColor;
+  };
+
   const chartData = (data: any) => {
     let analyticData = valSwitch ? data?.expense : data?.income;
 
@@ -60,36 +69,14 @@ const Layout = (props: Props) => {
 
   const cardContent = (item: any, i: number) => (
     <View style={screenStyles.itemTransaction}>
-      <View>
-        <Text
-          style={
-            i >= 3
-              ? screenStyles.itemTitle
-              : {...screenStyles.itemTitle, color: Colors.WHITE}
-          }
-        >
-          {`${i + 1}. ${item.category}`}
-        </Text>
-      </View>
+      <Text style={screenStyles.itemTitle}>{`${i + 1}. ${item.category}`}</Text>
 
       {valSwitch ? (
-        <Text
-          style={
-            i >= 3
-              ? screenStyles.itemExValue
-              : {...screenStyles.itemExValue, color: Colors.WHITE}
-          }
-        >
+        <Text style={screenStyles.itemExValue}>
           {`- ${Helper.numberWithSeparator(item.value)}`}
         </Text>
       ) : (
-        <Text
-          style={
-            i >= 3
-              ? screenStyles.itemInValue
-              : {...screenStyles.itemInValue, color: Colors.WHITE}
-          }
-        >
+        <Text style={screenStyles.itemInValue}>
           {`+ ${Helper.numberWithSeparator(item.value)}`}
         </Text>
       )}
@@ -127,7 +114,7 @@ const Layout = (props: Props) => {
           <View style={screenStyles.chartWrapper}>
             <VictoryPie
               height={Mixins.scaleSize(280)}
-              theme={VictoryTheme.material}
+              colorScale={colorScale()}
               data={chartData(analytics)}
               animate={{duration: 800}}
               innerRadius={56}
@@ -146,7 +133,7 @@ const Layout = (props: Props) => {
 
           <View style={screenStyles.listWrapper}>
             <Text style={screenStyles.listTitle}>
-              Largest {valSwitch ? 'expense' : 'income'} by category
+              5 Largest {valSwitch ? 'expense' : 'income'} by category
             </Text>
             {filterData(analytics)?.map((item: any, i: number) => (
               <TouchableOpacity
@@ -155,21 +142,28 @@ const Layout = (props: Props) => {
                 key={i}
               >
                 <View
-                  style={
-                    i >= 3
-                      ? screenStyles.card
-                      : {
-                          ...screenStyles.card,
-                          backgroundColor: valSwitch
-                            ? Colors.DANGER
-                            : Colors.SUCCESS,
-                        }
-                  }
+                  style={{
+                    ...screenStyles.card,
+                    backgroundColor: valSwitch ? Colors.DANGER : Colors.SUCCESS,
+                  }}
                 >
                   {cardContent(item, i)}
                 </View>
               </TouchableOpacity>
             ))}
+
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('AnalyticsListCategory', {
+                  data: filterData(analytics),
+                  type: valSwitch ? 'expense' : 'income',
+                })
+              }
+            >
+              <Text style={screenStyles.seeAllLink}>
+                See all {valSwitch ? 'expense' : 'income'} by category
+              </Text>
+            </TouchableOpacity>
           </View>
         </>
       ) : (

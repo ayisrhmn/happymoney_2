@@ -31,13 +31,6 @@ export const screenStyles = StyleSheet.create({
     fontSize: Mixins.scaleFont(16),
     fontWeight: 'bold',
     color: Colors.TEXT.primary,
-    marginBottom: Mixins.scaleSize(4),
-  },
-  itemContent: {
-    fontSize: Mixins.scaleFont(14),
-    color: Colors.TEXT.secondary,
-    textAlignVertical: 'center',
-    marginLeft: Mixins.scaleSize(6),
   },
   itemExValue: {
     fontSize: Mixins.scaleFont(16),
